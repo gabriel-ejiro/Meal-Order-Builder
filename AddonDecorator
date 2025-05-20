@@ -1,0 +1,18 @@
+class AddOnDecorator(MealComponent):
+    def __init__(self, component: MealComponent):
+        self.component = component
+
+    @property
+    def name(self):
+        return self.component.name
+
+    @property
+    def price(self):
+        return self.component.price
+
+    @property
+    def calories(self):
+        return self.component.calories
+
+    def __str__(self):
+        return str(self.component)
