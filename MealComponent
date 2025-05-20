@@ -1,0 +1,35 @@
+
+class MealComponent:
+    def __init__(self, name, price=0.0, calories=0):
+        self.name = name
+        self.price = price
+        self.calories = calories
+
+    def __str__(self):
+        return f"{self.name} (${self.price:.2f}, {self.calories} kcal)"
+
+class Meal:
+    def __init__(self):
+        self.main_dish = None
+        self.side = None
+        self.drink = None
+        self.dessert = None
+
+    def total_price(self):
+        return sum(c.price for c in self._components() if c)
+
+    def total_calories(self):
+        return sum(c.calories for c in self._components() if c)
+
+    def _components(self):
+        return [self.main_dish, self.side, self.drink, self.dessert]
+
+    def __str__(self):
+        return (
+            f"Main Dish: {self.main_dish}\n"
+            f"Side: {self.side}\n"
+            f"Drink: {self.drink}\n"
+            f"Dessert: {self.dessert}\n"
+            f"Total Price: ${self.total_price():.2f}\n"
+            f"Total Calories: {self.total_calories()} kcal"
+        )
