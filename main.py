@@ -1,0 +1,11 @@
+print("=== Kids Meal ===")
+kids_builder = KidsMealBuilder()
+director = MealDirector(kids_builder)
+kids_meal = director.construct_meal()
+print(kids_meal)
+
+print("\n=== Premium Meal ===")
+premium_builder = PremiumMealBuilder()
+director = MealDirector(premium_builder)
+premium_meal = director.construct_meal()
+print(premium_meal)
