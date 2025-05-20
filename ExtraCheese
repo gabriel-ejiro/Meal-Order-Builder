@@ -1,0 +1,23 @@
+class ExtraCheese(AddOnDecorator):
+    @property
+    def price(self):
+        return self.component.price + 0.75
+
+    @property
+    def calories(self):
+        return self.component.calories + 100
+
+    def __str__(self):
+        return f"{self.component.name} + Extra Cheese (${self.price:.2f}, {self.calories} kcal)"
+
+class SpicySauce(AddOnDecorator):
+    @property
+    def price(self):
+        return self.component.price + 0.30
+
+    @property
+    def calories(self):
+        return self.component.calories + 20
+
+    def __str__(self):
+        return f"{self.component.name} + Spicy Sauce (${self.price:.2f}, {self.calories} kcal)"
