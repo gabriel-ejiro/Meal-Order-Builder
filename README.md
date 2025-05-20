@@ -29,3 +29,14 @@ The goal is to isolate the construction logic so that future changes (like addin
 - PremiumMealBuilder:	Concrete builder for premium meals
 
 - MealDirector:	Directs the step-by-step meal creation
+
+
+Challenge Ideas / Extensions
+
+- Add a custom meal builder that lets users choose each element via CLI.
+
+- Add price and calories fields to each meal component.
+
+- Use the Decorator Pattern to allow optional add-ons (e.g., extra cheese, sauces).
+
+- Turn the project into a simple REST API using Flask or FastAPI.
