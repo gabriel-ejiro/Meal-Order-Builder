@@ -1,25 +1,27 @@
+
 class KidsMealBuilder(MealBuilder):
     def add_main(self):
-        self.meal.main = "Mini Burger"
+        self.meal.main = {"item": "Mini Burger", "price": 1000, "calories": 350}
 
     def add_side(self):
-        self.meal.side = "Small Fries"
+        self.meal.side = {"item": "Small Fries", "price": 500, "calories": 250}
 
     def add_drink(self):
-        self.meal.drink = "Juice Box"
+        self.meal.drink = {"item": "Juice Box", "price": 300, "calories": 100}
 
     def add_dessert(self):
-        self.meal.dessert = "Mini Ice Cream"
+        self.meal.dessert = {"item": "Mini Ice Cream", "price": 400, "calories": 180}
+
 
 class PremiumMealBuilder(MealBuilder):
     def add_main(self):
-        self.meal.main = "Double Cheeseburger"
+        self.meal.main = {"item": "Double Cheeseburger", "price": 2500, "calories": 700}
 
     def add_side(self):
-        self.meal.side = "Large Fries"
+        self.meal.side = {"item": "Large Fries", "price": 1000, "calories": 500}
 
     def add_drink(self):
-        self.meal.drink = "Coca-Cola"
+        self.meal.drink = {"item": "Coca-Cola", "price": 600, "calories": 180}
 
     def add_dessert(self):
-        self.meal.dessert = "Cheesecake"
+        self.meal.dessert = {"item": "Cheesecake", "price": 1200, "calories": 450}
