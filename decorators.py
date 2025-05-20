@@ -31,3 +31,10 @@ meal.side = HotSauce(meal.side).add()
 print(meal)
 
 
+
+burger = MealComponent("Beef Burger", 5.99, 500)
+burger = ExtraCheese(burger)
+burger = SpicySauce(burger)
+self.meal.main_dish = burger
+
+
