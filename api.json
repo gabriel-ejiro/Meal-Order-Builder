@@ -1,0 +1,78 @@
+@app.route("/kids")
+def get_kids_meal():
+    builder = KidsMealBuilder()
+    director = MealDirector(builder)
+    meal = director.construct_meal()
+    return jsonify(meal_to_dict(meal))
+
+@app.route("/premium")
+def get_premium_meal():
+    builder = PremiumMealBuilder()
+    director = MealDirector(builder)
+    meal = director.construct_meal()
+
+    # Optional add-ons via query string
+    if request.args.get("cheese") == "1":
+        meal.main = ExtraCheese(meal.main).add()
+    if request.args.get("hot_sauce") == "1":
+        meal.side = HotSauce(meal.side).add()
+
+    return jsonify(meal_to_dict(meal))
+
+@app.route("/custom", methods=["POST"])
+def build_custom_meal():
+    data = request.json
+    builder = CustomMealBuilder()
+
+    builder.meal.main = data.get("main", {"item": "None", "price": 0, "calories": 0})
+    builder.meal.side = data.get("side", {"item": "None", "price": 0, "calories": 0})
+    builder.meal.drink = data.get("drink", {"item": "None", "price": 0, "calories": 0})
+    builder.meal.dessert = data.get("dessert", {"item": "None", "price": 0, "calories": 0})
+
+    return jsonify(meal_to_dict(builder.get_meal()))
+
+
+# Cell 15: Flask API logic
+@app.route("/kids")
+def get_kids_meal():
+    builder = KidsMealBuilder()
+    director = MealDirector(builder)
+    meal = director.construct_meal()
+    return jsonify(meal_to_dict(meal))
+
+@app.route("/premium")
+def get_premium_meal():
+    builder = PremiumMealBuilder()
+    director = MealDirector(builder)
+    meal = director.construct_meal()
+
+    # Optional add-ons via query string
+    if request.args.get("cheese") == "1":
+        meal.main = ExtraCheese(meal.main).add()
+    if request.args.get("hot_sauce") == "1":
+        meal.side = HotSauce(meal.side).add()
+
+    return jsonify(meal_to_dict(meal))
+
+@app.route("/custom", methods=["POST"])
+def build_custom_meal():
+    data = request.json
+    builder = CustomMealBuilder()
+
+    builder.meal.main = data.get("main", {"item": "None", "price": 0, "calories": 0})
+    builder.meal.side = data.get("side", {"item": "None", "price": 0, "calories": 0})
+    builder.meal.drink = data.get("drink", {"item": "None", "price": 0, "calories": 0})
+    builder.meal.dessert = data.get("dessert", {"item": "None", "price": 0, "calories": 0})
+
+    return jsonify(meal_to_dict(builder.get_meal()))
+
+
+def run_app():
+    app.run(port=5000)
+
+thread = Thread(target=run_app)
+thread.start()
+
+
+## http://localhost:5000/kids
+
